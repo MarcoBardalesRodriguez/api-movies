@@ -1,48 +1,80 @@
 <?php
-//require_once "config.php";
-require_once "remote-config.php";
 
 class DataBase
 {
+    const FILE_LOCAL = 'Model/config-local.php';
+    const FILE_REMOTE = 'Model/config-remote.php';
+    const REMOTE_HOST = 'webhost-php-movie-api.000webhostapp.com';
+
+
+    private static function import_file() {
+        if ($_SERVER['HTTP_HOST'] === 'localhost' || $_SERVER['HTTP_HOST'] === '127.0.0.1') {
+            if (file_exists(self::FILE_LOCAL)) {
+                require self::FILE_LOCAL;
+            } else {
+                trigger_error("Error: El archivo local no existe en la ruta especificada.", E_USER_ERROR);
+            }
+        } elseif ($_SERVER['HTTP_HOST'] === self::REMOTE_HOST) {
+            if (file_exists(self::FILE_REMOTE)) {
+                require self::FILE_REMOTE;
+            } else {
+                trigger_error("Error: El archivo remoto no existe en la ruta especificada.", E_USER_ERROR);
+            }
+        }
+    }
+
+
     private function connect_PDO()
     {
+        self::import_file();
         try{
-            //Connection with environment variables
-            //$dsn = "mysql:host={$_ENV["HOST"]};port={$_ENV["PORT"]};dbname={$_ENV["DATABASE"]}";
-            //$conn = new PDO($dsn, $_ENV["USERNAME"], $_ENV["PASSWORD"]);
-
-            //Connection with file remote-config.php
+            if (!defined('DB_HOST') || 
+                !defined('DB_PORT') || 
+                !defined('DB_NAME') || 
+                !defined('DB_USERNAME') || 
+                !defined('DB_PASSWORD')) 
+            {
+                throw new Exception("Error: No se han proporcionado los detalles de conexión a la base de datos.");
+            }
             $conn = new PDO("mysql:host=".DB_HOST.";port=".DB_PORT.";dbname=".DB_NAME,DB_USERNAME,DB_PASSWORD);
-
-            //Connection with file config.php
-            //$conn = new PDO("mysql:host=".DB_HOST_LOCAL.";dbname=".DB_NAME_LOCAL,DB_USERNAME_LOCAL,DB_PASSWORD_LOCAL);
-
             $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-        }catch(Exception $e){
-            die('Error: '.$e->getMessage());
+        }catch(PDOException $e){
+            if ($e->getCode() == 1049) {
+                die("Error: La base de datos especificada no existe.");
+            } else if ($e->getCode() == 1045) {
+                die("Error: Nombre de usuario o contraseña de base de datos incorrectos.");
+            } else {
+                die('Error: '.$e->getMessage());
+            }
         }
         return $conn;
     }
 
-    //funcion que recive una consulta sql con/sin parametros, y los parametros necesarios
-    //prepara la consulta 
-    //y retorna un objeto iterable
+
     function executeStatement($query = "", $args = array())
     {
-        $statement = $this->connect_PDO()->prepare($query);
-        if($statement === FALSE)
-        {
-          echo "Error: Can't prepare query";
+        if (!is_string($query) || empty($query)) {
+            throw new InvalidArgumentException("Error: La consulta debe ser una cadena no vacía.");
         }
 
-        try{
-          $statement->execute($args);
-        }catch(Exception $e){
-          die($e->getMessage());
+        if (!is_array($args)) {
+            throw new InvalidArgumentException("Error: Los parámetros deben ser un arreglo.");
         }
 
-        $result = $statement->fetchAll();
+        try {
+            $statement = $this->connect_PDO()->prepare($query);
+            if($statement === FALSE)
+            {
+              echo "Error al preparar la consulta";
+            }
+            $statement->execute($args);
+            $result = $statement->fetchAll();
+        } catch (PDOException $e) {
+            $error_message = "Error al ejecutar la consulta: " . $e->getMessage();
+            error_log($error_message, 0);
+            return false;
+        }
         return $result;
     }
 }
