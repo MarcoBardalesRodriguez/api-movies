@@ -1,6 +1,6 @@
 <?php
 //require_once "config.php";
-//require_once "remote-config.php";
+require_once "remote-config.php";
 
 class DataBase
 {
@@ -8,11 +8,11 @@ class DataBase
     {
         try{
             //Connection with environment variables
-            $dsn = "mysql:host={$_ENV["HOST"]};port={$_ENV["PORT"]};dbname={$_ENV["DATABASE"]}";
-            $conn = new PDO($dsn, $_ENV["USERNAME"], $_ENV["PASSWORD"]);
+            //$dsn = "mysql:host={$_ENV["HOST"]};port={$_ENV["PORT"]};dbname={$_ENV["DATABASE"]}";
+            //$conn = new PDO($dsn, $_ENV["USERNAME"], $_ENV["PASSWORD"]);
 
             //Connection with file remote-config.php
-            //$conn = new PDO("mysql:host=".DB_HOST.";port=".DB_PORT.";dbname=".DB_NAME,DB_USERNAME,DB_PASSWORD);
+            $conn = new PDO("mysql:host=".DB_HOST.";port=".DB_PORT.";dbname=".DB_NAME,DB_USERNAME,DB_PASSWORD);
 
             //Connection with file config.php
             //$conn = new PDO("mysql:host=".DB_HOST_LOCAL.";dbname=".DB_NAME_LOCAL,DB_USERNAME_LOCAL,DB_PASSWORD_LOCAL);
