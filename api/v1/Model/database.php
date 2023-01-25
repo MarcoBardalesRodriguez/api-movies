@@ -4,7 +4,8 @@ class DataBase
 {
     const FILE_LOCAL = 'Model/config-local.php';
     const FILE_REMOTE = 'Model/config-remote.php';
-    const REMOTE_HOST = 'webhost-php-movie-api.000webhostapp.com';
+    const REMOTE_HOST_1 = 'webhost-php-movie-api.000webhostapp.com';
+    const REMOTE_HOST_2 = 'api-movies.marco-code.ga';
 
 
     private static function import_file() {
@@ -14,11 +15,21 @@ class DataBase
             } else {
                 trigger_error("Error: El archivo local no existe en la ruta especificada.", E_USER_ERROR);
             }
-        } elseif ($_SERVER['HTTP_HOST'] === self::REMOTE_HOST) {
+        } elseif ($_SERVER['HTTP_HOST'] === self::REMOTE_HOST_1) {
             if (file_exists(self::FILE_REMOTE)) {
                 require self::FILE_REMOTE;
             } else {
                 trigger_error("Error: El archivo remoto no existe en la ruta especificada.", E_USER_ERROR);
+            }
+        } elseif ($_SERVER['HTTP_HOST'] === self::REMOTE_HOST_2) {
+            if (isset($_ENV['DB_HOST'])) {
+                define('DB_HOST',$_ENV['DB_HOST']);
+                define('DB_PORT',$_ENV['DB_PORT']);
+                define('DB_NAME',$_ENV['DB_NAME']);
+                define('DB_USERNAME',$_ENV['DB_USERNAME']);
+                define('DB_PASSWORD',$_ENV['DB_PASSWORD']);
+            } else {
+                trigger_error("Error: La variable de entorno especificada no existe.", E_USER_ERROR);
             }
         }
     }
