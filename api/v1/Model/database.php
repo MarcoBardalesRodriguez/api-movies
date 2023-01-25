@@ -23,11 +23,11 @@ class DataBase
             }
         } elseif ($_SERVER['HTTP_HOST'] === self::REMOTE_HOST_2) {
             if (isset($_ENV['DB_HOST'])) {
-                define('DB_HOST',$_ENV['DB_HOST']);
-                define('DB_PORT',$_ENV['DB_PORT']);
-                define('DB_NAME',$_ENV['DB_NAME']);
-                define('DB_USERNAME',$_ENV['DB_USERNAME']);
-                define('DB_PASSWORD',$_ENV['DB_PASSWORD']);
+                define('DB_HOST',$_ENV["DB_HOST"]);
+                define('DB_PORT',$_ENV["DB_PORT"]);
+                define('DB_NAME',$_ENV["DB_NAME"]);
+                define('DB_USERNAME',$_ENV["DB_USERNAME"]);
+                define('DB_PASSWORD',$_ENV["DB_PASSWORD"]);
             } else {
                 trigger_error("Error: La variable de entorno especificada no existe.", E_USER_ERROR);
             }
