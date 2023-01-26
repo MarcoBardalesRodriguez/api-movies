@@ -22,15 +22,20 @@ class DataBase
                 trigger_error("Error: El archivo remoto no existe en la ruta especificada.", E_USER_ERROR);
             }
         } elseif ($_SERVER['HTTP_HOST'] === self::REMOTE_HOST_2) {
-            if (isset($_ENV['DB_HOST'])) {
-                define('DB_HOST',$_ENV["DB_HOST"]);
-                define('DB_PORT',$_ENV["DB_PORT"]);
-                define('DB_NAME',$_ENV["DB_NAME"]);
-                define('DB_USERNAME',$_ENV["DB_USERNAME"]);
-                define('DB_PASSWORD',$_ENV["DB_PASSWORD"]);
-            } else {
-                trigger_error("Error: La variable de entorno especificada no existe.", E_USER_ERROR);
-            }
+            define('DB_HOST','containers-us-west-53.railway.app');
+            define('DB_PORT','7258');
+            define('DB_NAME','railway');
+            define('DB_USERNAME','root');
+            define('DB_PASSWORD','SIeFjUr4qfQFlmYyR0if');
+//            if (isset($_ENV['DB_HOST'])) {
+//                define('DB_HOST',$_ENV["DB_HOST"]);
+//                define('DB_PORT',$_ENV["DB_PORT"]);
+//                define('DB_NAME',$_ENV["DB_NAME"]);
+//                define('DB_USERNAME',$_ENV["DB_USERNAME"]);
+//                define('DB_PASSWORD',$_ENV["DB_PASSWORD"]);
+//            } else {
+//                trigger_error("Error: La variable de entorno especificada no existe.", E_USER_ERROR);
+//            }
         }
     }
 
