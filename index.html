@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
+    <meta name="description"
+        content="All the Movies data you'll ever need in one place, easilyaccessible through a modern RESTful API." />
     <meta name="author" content="Marco Bardales Rodriguez" />
     <title>Api movies - Home</title>
     <!-- Favicon-->
@@ -56,7 +57,7 @@
     </header>
 
     <!-- Image Showcases-->
-    <section class="showcase">
+    <section class="showcase" id="try">
         <div class="container-fluid p-0">
             <div class="row g-0">
                 <div class="col-lg-7 order-lg-1 my-auto showcase-text">
@@ -80,16 +81,17 @@
                     </div>
                     <p class="lead mb-0">Need a hint? Try</p>
                     <ul class="list mb-2">
-                        <li class="list-item"><a href="#!">movie.php?id=tt0038733</a></li>
-                        <li class="list-item"><a href="#!">genres.php</a></li>
-                        <li class="list-item"><a href="#!">rolemapping.php?movie_id=tt0038733</a></li>
+                        <li class="list-item"><a href="#try" class="hint">movies.php?id=tt0038733</a></li>
+                        <li class="list-item"><a href="#try" class="hint">genres.php</a></li>
+                        <li class="list-item"><a href="#try" class="hint">persons.php?id=nm0001375</a></li>
+                        <li class="list-item"><a href="#try" class="hint">rolemapping.php?movie_id=tt0038733</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-5 order-lg-2 my-auto px-3" id="container_response">
                     <template id="template">
                         <div>
-                            <pre class="img-thumbnail border-0">
-                                <code class="language-json" id="response">
+                            <pre>
+                                <code class="language-json" id="response" style="height:auto; max-height:450px">
                                 </code>
                             </pre>
                         </div>

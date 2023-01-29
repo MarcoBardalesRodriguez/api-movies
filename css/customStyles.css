@@ -4,7 +4,7 @@ body::-webkit-scrollbar {
 }
 
 body:hover::-webkit-scrollbar {
-  display: initial;
+  display: none;
 }
 
 /*
