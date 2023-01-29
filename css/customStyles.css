@@ -1,0 +1,18 @@
+/*Webkit(Chrome, Android browser, Safari, Edge...)*/
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body:hover::-webkit-scrollbar {
+  display: initial;
+}
+
+/*
+body::-webkit-scrollbar-thumb {
+  background-color: #0d6efd;
+}
+*/
+
+#response {
+  overflow-y: scroll;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="Marco Bardales Rodriguez" />
+    <title>Api movies - Home</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Custom CSS-->
+    <link href="css/customStyles.css" rel="stylesheet" />
+    <!-- Highlight.js-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#!">Api movies</a>
+            <a class="btn btn-primary" href="#!">Docs</a>
+        </div>
+    </nav>
+
+    <!-- Masthead-->
+    <header class="masthead py-5" style="background-image: url('assets/img/bg-masthead-1.png')">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="text-center text-white">
+                        <!-- Page heading-->
+                        <h1 class="mb-5">
+                            Api movies
+                        </h1>
+                        <p class="lead">
+                            All the Movies data you'll ever need in one place, easily
+                            accessible through a modern RESTful API.
+                        </p>
+                        <p class="lead mb-0">
+                            <a class="text-white" href="https://">Check out the docs!</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Image Showcases-->
+    <section class="showcase">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-lg-7 order-lg-1 my-auto showcase-text">
+                    <h2>Try it now!</h2>
+                    <div>
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">https://api-movies.marco-code.ga/api/v1/</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="endpoint" name="endpoint"
+                                        placeholder="{  endpoint  }" value="persons.php?id=nm0000009">
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-primary mb-2" id="button">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="lead mb-0">Need a hint? Try</p>
+                    <ul class="list mb-2">
+                        <li class="list-item"><a href="#!">movie.php?id=tt0038733</a></li>
+                        <li class="list-item"><a href="#!">genres.php</a></li>
+                        <li class="list-item"><a href="#!">rolemapping.php?movie_id=tt0038733</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-5 order-lg-2 my-auto px-3" id="container_response">
+                    <template id="template">
+                        <div>
+                            <pre class="img-thumbnail border-0">
+                                <code class="language-json" id="response">
+                                </code>
+                            </pre>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Icons Grid-->
+    <section class="features-icons bg-light text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
+                        <h3>"What is this?"</h3>
+                        <p class="lead mb-0">This is a complete RESTful API linked to an extensive
+                            database detailing everything about movies from around
+                            the world.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
+                        <h3>Where do I start?</h3>
+                        <p class="lead mb-0">We have awesome documentation on how to use this API. It
+                            takes minutes to get started. <br />
+                            This API will always be publicly available and will never
+                            require any extensive setup process to consume.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer-->
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#!">Docs</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; api-movies.marco-code.ga 2022. All Rights Reserved.
+                    </p>
+                    <span>Create by <a href="https://portfolio.marco-dev.ga">Marco Bardales Rodriguez</a></span>
+                </div>
+                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item me-4">
+                            <a href="#!"><i class="bi-github fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item me-4">
+                            <a href="#!"><i class="bi-youtube fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!"><i class="bi-linkedin fs-3"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core JS-->
+    <script src="js/main.js"></script>
+    <!-- Highlight.js-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
