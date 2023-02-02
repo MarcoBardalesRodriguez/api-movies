@@ -7,12 +7,34 @@ body:hover::-webkit-scrollbar {
   display: none;
 }
 
-/*
-body::-webkit-scrollbar-thumb {
-  background-color: #0d6efd;
+#sidebar{
+  position: fixed;
+  top: 55px;
+  width: 14rem;
+  height: calc(100vh - 55px);
 }
-*/
 
-#response {
-  overflow-y: scroll;
+.toggle-sidebar{
+  left: -14rem;
+
+}
+
+.code-container {
+  background-color: #0d1117;
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 10px
+}
+
+@media screen and (min-width: 768px) {
+  #sidebarToggle{
+    display: none;
+  }
+  .toggle-sidebar{
+    left: 0rem;
+  }
+  #page-content{
+    margin-left: 14rem;
+  }
+  
 }

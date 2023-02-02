@@ -34,8 +34,8 @@
 	<!-- Google fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
 		type="text/css" />
-	<!-- Core theme CSS (includes Bootstrap)-->
-	<link href="css/styles.css" rel="stylesheet" />
+	<!-- Core theme CSS (Bootstrap)-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<!-- Custom CSS-->
 	<link href="css/customStyles.css" rel="stylesheet" />
 	<!-- Highlight.js-->
@@ -43,57 +43,724 @@
 </head>
 
 <body>
-	<!-- Navigation-->
-	<nav class="navbar navbar-light bg-light static-top">
-		<div class="container">
-			<a class="navbar-brand" href="#!">Api movies</a>
-			<a class="btn btn-primary" href="docs/v1/en/index.html" target="_blank">Docs</a>
+	<!-- Top navigation-->
+	<nav class="navbar fixed-top bg-light border-bottom">
+		<div class="container-fluid">
+			<button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+			<a class="btn btn-primary" href="https://api-movies.marco-code.ga/index.html" target="_blank">Home</a>
 		</div>
 	</nav>
 
-
-	<!-- Footer-->
-	<footer class="footer bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="docs/v1/en/index.html" target="_blank">Docs</a></li>
-					</ul>
-					<p class="text-muted small mb-4 mb-lg-0">&copy; marco-code.ga 2022. All Rights Reserved.
-					</p>
-					<span>Create by <a href="https://portfolio.marco-code.ga" target="_blank">Marco Bardales
-							Rodriguez</a></span>
-				</div>
-				<div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-					<ul class="list-inline mb-0">
-						<li class="list-inline-item me-4">
-							<a href="https://github.com/MarcoBardalesRodriguez" target="_blank"><i class="bi-github fs-3"></i></a>
-						</li>
-						<li class="list-inline-item me-4">
-							<a href="https://www.youtube.com/@marcobardalesrodriguez753" target="_blank"><i
-									class="bi-youtube fs-3"></i></a>
-						</li>
-						<li class="list-inline-item">
-							<a href="https://www.linkedin.com/in/marco-antonio-b-31b254186/" target="_blank"><i
-									class="bi-linkedin fs-3"></i></a>
-						</li>
-					</ul>
-				</div>
+	<!-- Main-->
+	<div class="d-flex" id="main" style="margin-top: 55px;">
+		<!-- Sidebar-->
+		<div class="navbar bg-white px-3" id="sidebar">
+			<div class="navbar-brand bg-light">Documentation</div>
+			<div class="navbar-nav flex-column mb-auto">
+				<a class="nav-link active" href="#introduction">Introduction</a>
+				<a class="nav-link px-4" href="#information">Information</a>
+				<a class="nav-link px-4" href="#named">Named</a>
+				<a class="nav-link active" href="#resources">Resources</a>
+				<a class="nav-link px-4" href="#movies">Movies</a>
+				<a class="nav-link px-4" href="#genres">Genres</a>
+				<a class="nav-link px-4" href="#genres-mapping">Genres mapping</a>
+				<a class="nav-link px-4" href="#persons">Persons</a>
+				<a class="nav-link px-4" href="#directors-mapping">Directors mapping</a>
+				<a class="nav-link px-4" href="#roles-mapping">Roles mapping</a>
+				<a class="nav-link px-4" href="#rating">Rating</a>
 			</div>
 		</div>
-	</footer>
+		<!-- Page content-->
+		<div class="container-fluid" id="page-content">
+
+			<!-- Section Introduction-->
+			<section class="container py-4" id="introduction">
+				<h1>Introduction</h1>
+
+				<!-- Article Information-->
+				<article class="container py-4" id="information">
+					<h2>Information</h2>
+					<div class="px-3">
+						<p>
+							This is a consumption-only API — only the HTTP GET method is available on resources.
+						</p>
+						<p>
+							No authentication is required to access this API, and all resources are fully open and
+							available. There
+							is
+							no cap on fees, but we still encourage you to limit the frequency of requests to limit
+							our hosting
+							costs.
+						</p>
+						<h3>Fair Use Policy</h3>
+						<p>
+							PokéAPI is free and open to use. It is also very popular. Because of this, we ask every
+							developer to
+							abide
+							by our fair use policy. People not complying with the fair use policy will have their IP
+							address
+							permanently banned.
+						</p>
+						<p>
+							PokéAPI is primarily an educational tool, and we will not tolerate denial of service
+							attacks preventing
+							people from learning.
+						</p>
+						<h5>Rules:</h5>
+						<ul>
+							<li>Locally cache resources whenever you request them.</li>
+							<li>Be nice and friendly to your fellow PokéAPI developers.</li>
+						</ul>
+						<h3>Github</h3>
+						<p>
+							Have questions? Ideas? Notice something amiss here in the docs? Hit us up on <a
+								href="https://github.com/MarcoBardalesRodriguez/docs-api-movies/issues">Github</a>.
+							We encourage you
+							to
+							come.
+						</p>
+					</div>
+				</article>
+
+				<!-- Article Named-->
+				<article class="container py-4" id="named">
+					<h2>Named</h2>
+					<div class="px-3">
+						<p>
+							Calling any API endpoint without a resource ID or will return a count of available
+							resources for that
+							API.
+						</p>
+						<p><strong>Named</strong> (endpoint)</p>
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/{endpoint}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">  {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">13</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"COUNT(*)"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">13</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+					</div>
+				</article>
+			</section>
+
+			<!-- Section Resources-->
+			<section class="container py-4" id="resources">
+				<h1>Resources</h1>
+				<!-- Article Resource: movies-->
+				<article class="container py-4" id="movies">
+					<h2>Movies (endpoint)</h2>
+					<div class="px-3">
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/movies.php?{id}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">  {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"title"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"A Matter of Life and Death"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"A Matter of Life and Death"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"year"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">2017</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">2017</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"date_published"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"2017-12-08"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"2017-12-08"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"duration"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">104</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">104</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"country"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"UK"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"5"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"UK"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"worldwide_gross_income"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"$ 124241"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"6"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"$ 124241"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"languages"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"English, French, Russian"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"7"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"English, French, Russian"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"production_company"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"The Archers"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"8"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"The Archers"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+
+						<h3>Movies (type)</h3>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>title</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>year</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>date_published</td>
+									<td>date</td>
+								</tr>
+								<tr>
+									<td>duration</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>country</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>worldwide_gross_income</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>production_company</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+
+				<!-- Article Resource: genres-->
+				<article class="container py-4" id="genres">
+					<h2>Genres (endpoint)</h2>
+					<div class="px-3">
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/genres.php?{id}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0012350"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0012350"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Fantasy"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Fantasy"</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+						<h3>Genres (type)</h3>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+
+				<!-- Article Resource: Genres mapping-->
+				<article class="container py-4" id="genres-mapping">
+					<h2>Genres mapping (endpoint)</h2>
+					<div class="px-3">
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/genremapping.php?{movie_id or genre_id}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0012350"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0012350"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Fantasy"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Fantasy"</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0017639"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0017639"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Drama"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Drama"</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0019879"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"gn0019879"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Comedy"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Comedy"</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+						<h3>Genres mapping (type)</h3>
+						<h4>movie_id</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>title</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>year</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>date_published</td>
+									<td>date</td>
+								</tr>
+								<tr>
+									<td>duration</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>country</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>worldwide_gross_income</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>production_company</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>genre_id</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</article>
+
+				<!-- Article Resource: persons-->
+				<article class="container py-4" id="persons">
+					<h2>Persons (endpoint)</h2>
+					<div class="px-3">
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/persons.php?{id}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0000009"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0000009"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Richard Burton"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Richard Burton"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"height"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">175</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">175</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"date_of_birth"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1925-11-10"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1925-11-10"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"known_for_movies"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+						<h3>Persons (type)</h3>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>height</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>date_of_birth</td>
+									<td>date</td>
+								</tr>
+								<tr>
+									<td>known_for_movies</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+
+				<!-- Article Resource: directors mapping-->
+				<article class="container py-4" id="directors-mapping">
+					<h2>Directors mapping (endpoint)</h2>
+					<div class="px-3">
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/directormapping.php?{movie_id or person_id}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0003836"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0003836"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Michael Powell"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Michael Powell"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"height"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">188</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">188</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"date_of_birth"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1905-09-30"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1905-09-30"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"known_for_movies"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0696247"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0696247"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Emeric Pressburger"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Emeric Pressburger"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"height"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">97</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">97</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"date_of_birth"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1902-12-05"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1902-12-05"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"known_for_movies"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+						<h3>Directors mapping (type)</h3>
+						<h4>movie_id</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>height</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>date_of_birth</td>
+									<td>date</td>
+								</tr>
+								<tr>
+									<td>known_for_movies</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>person_id</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>title</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>year</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>date_published</td>
+									<td>date</td>
+								</tr>
+								<tr>
+									<td>duration</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>country</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>worldwide_gross_income</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>production_company</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+
+				<!-- Article Resource: roles mapping-->
+				<article class="container py-4" id="roles-mapping">
+					<h2>Roles mapping (endpoint)</h2>
+					<div class="px-3">
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/rolemapping.php?{movie_id or person_id}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0000057"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0000057"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"David Niven"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"David Niven"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"height"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">180</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">180</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"date_of_birth"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1910-03-01"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1910-03-01"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"known_for_movies"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"role"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actor"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"5"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actor"</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0001375"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0001375"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Kim Hunter"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Kim Hunter"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"height"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">161</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">161</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"date_of_birth"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1922-11-12"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1922-11-12"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"known_for_movies"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"role"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actress"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"5"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actress"</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0126402"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0126402"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Kathleen Byron"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Kathleen Byron"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"height"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"date_of_birth"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1921-01-11"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1921-01-11"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"known_for_movies"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"role"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actress"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"5"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actress"</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0178509"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nm0178509"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Robert Coote"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Robert Coote"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"height"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"date_of_birth"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1909-02-04"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"1909-02-04"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"known_for_movies"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"4"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"role"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actor"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"5"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"actor"</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+						<h3>Roles mapping (type)</h3>
+						<h4>movie_id</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>name</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>height</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>date_of_birth</td>
+									<td>date</td>
+								</tr>
+								<tr>
+									<td>known_for_movies</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>role</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>person_id</h4>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>title</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>year</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>date_published</td>
+									<td>date</td>
+								</tr>
+								<tr>
+									<td>duration</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>country</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>worldwide_gross_income</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>production_company</td>
+									<td>string</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+
+				<!-- Article Resource: rating-->
+				<article class="container py-4" id="rating">
+					<h2>Rating (endpoint)</h2>
+					<div class="px-3">
+						<p><strong><code>GET</code></strong>
+							<code>https://api-movies.marco-code.ga/api/v1/rating.php?{id}</code>
+						</p>
+						<pre is:raw="" class="code-container"><code><span class="line"><span style="color: #C9D1D9">[</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"movie_id"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"0"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tt0038733"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"rating"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"8.1"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"1"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"8.1"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"total_votes"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">17693</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"2"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">17693</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"median_rating"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">8</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">"3"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">8</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+						<h3>Rating (type)</h3>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Named</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>movie_id</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>rating</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>total_votes</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>median_rating</td>
+									<td>int</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+			</section>
+
+			<!-- Footer-->
+			<footer class="footer bg-light py-5">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+							<ul class="list-inline mb-2">
+								<li class="list-inline-item"><a href="https://api-movies.marco-code.ga/index.html"
+										target="_blank">Home</a>
+								</li>
+							</ul>
+							<p class="text-muted small mb-4 mb-lg-0">&copy; marco-code.ga 2022. All Rights Reserved.
+							</p>
+							<span>Create by <a href="https://portfolio.marco-code.ga" target="_blank">Marco Bardales
+									Rodriguez</a></span>
+						</div>
+						<div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+							<ul class="list-inline mb-0">
+								<li class="list-inline-item me-4">
+									<a href="https://github.com/MarcoBardalesRodriguez" target="_blank"><i
+											class="bi-github fs-3"></i></a>
+								</li>
+								<li class="list-inline-item me-4">
+									<a href="https://www.youtube.com/@marcobardalesrodriguez753" target="_blank"><i
+											class="bi-youtube fs-3"></i></a>
+								</li>
+								<li class="list-inline-item">
+									<a href="https://www.linkedin.com/in/marco-antonio-b-31b254186/" target="_blank"><i
+											class="bi-linkedin fs-3"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+	</div>
 
 
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Scrollable a11y code helper -->
-	<script src="/make-scrollable-code-focusable.js"></script>
 	<!-- Core JS-->
 	<script src="js/main.js"></script>
-	<!-- Highlight.js-->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 </body>
 
 </html>
