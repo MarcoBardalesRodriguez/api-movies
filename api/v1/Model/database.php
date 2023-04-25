@@ -5,7 +5,7 @@ class DataBase
     const FILE_LOCAL = 'Model/config-local.php';
     const FILE_REMOTE = 'Model/config-remote.php';
     const REMOTE_HOST_1 = 'webhost-php-movie-api.000webhostapp.com';
-    const REMOTE_HOST_2 = 'api-movies.marco-code.ga';
+    const REMOTE_HOST_2 = 'apimovies.marcobardalesrodriguez.site';
 
 
     private static function import_file() {

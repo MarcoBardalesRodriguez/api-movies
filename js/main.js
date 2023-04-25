@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	//funcion que hace un fetch a un endpoint 
 	//llama a la funcion showResponse pasando la data en formato json
 	function fetchData(endpoint) {
-		let api = `https://api-movies.marco-code.ga/api/v1/${endpoint}`;
+		let api = `https://apimovies.marcobardalesrodriguez.site/api/v1/${endpoint}`;
 		console.log(api);
 
 		fetch(api, {
