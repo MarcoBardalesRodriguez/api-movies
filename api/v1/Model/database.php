@@ -85,7 +85,7 @@ class DataBase
               echo "Error al preparar la consulta";
             }
             $statement->execute($args);
-            $result = $statement->fetchAll();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             $error_message = "Error al ejecutar la consulta: " . $e->getMessage();
             error_log($error_message, 0);
