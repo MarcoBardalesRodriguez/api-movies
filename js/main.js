@@ -27,7 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	//funcion que hace un fetch a un endpoint 
 	//llama a la funcion showResponse pasando la data en formato json
 	function fetchData(endpoint) {
-		let api = `https://apimovies.apps.marcobardalesrodriguez.site/api/v1/${endpoint}`;
+		// use  diferent api url if us on localhost or on production
+		let host = window.location.hostname === "localhost" ?
+			"http://localhost" :
+			"https://apimovies.apps.marcobardalesrodriguez.site";
+		let api = `${host}/api/v1/${endpoint}`;
 		console.log(api);
 
 		fetch(api, {
